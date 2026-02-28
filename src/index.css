@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand: #7B89F4;
+  --color-brand-light: #A5AFFF;
+  --color-bg: #F4F6FB;
+  --color-card: #FFFFFF;
+  --color-text-main: #1E293B;
+  --color-text-muted: #64748B;
+  --color-coral: #FF7675;
+  --color-emerald: #00B894;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text-main font-sans antialiased overflow-x-hidden;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  #root {
+    @apply h-full;
+  }
+}
+
+.typing-indicator {
+  @apply flex gap-1 items-center p-3 bg-white rounded-2xl rounded-tl-none shadow-sm border border-brand/5 w-fit;
+}
+
+.typing-dot {
+  @apply w-1.5 h-1.5 bg-brand/40 rounded-full;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-4px); }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glass-card {
+  @apply bg-card border border-white/40 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-[2rem];
+}
+
+.btn-primary {
+  @apply bg-brand text-white px-6 py-4 rounded-2xl font-bold transition-all hover:brightness-110 active:scale-95 shadow-lg shadow-brand/20;
+}
+
+.btn-secondary {
+  @apply bg-white text-brand border border-brand/20 px-6 py-4 rounded-2xl font-bold transition-all hover:bg-brand/5 active:scale-95;
+}
+
+.mood-btn {
+  @apply p-2 rounded-2xl transition-all duration-300 flex flex-col items-center gap-2;
+}
+
+.mood-btn.active {
+  @apply bg-brand/10 scale-110 ring-2 ring-brand/20;
+}
+
+.chat-bubble-user {
+  @apply bg-brand text-white rounded-3xl rounded-tr-none px-5 py-3 shadow-md;
+}
+
+.chat-bubble-ai {
+  @apply bg-white text-text-main rounded-3xl rounded-tl-none px-5 py-3 shadow-sm border border-brand/5;
+}
+
+.nav-item {
+  @apply flex flex-col items-center gap-1 transition-all duration-300;
+}
+
+.nav-item.active {
+  @apply text-brand scale-110;
+}
+
+.nav-item:not(.active) {
+  @apply text-text-muted opacity-60;
+}
